@@ -45,7 +45,7 @@ export default async function GET() {
         layoutContainer:
           "relative w-full h-full flex flex-col items-center justify-center",
         contentContainer:
-          "relative flex flex-col space-between w-full min-h-screen mx-auto px-[40px] py-[40px]",
+          "relative flex flex-col w-full min-h-screen mx-auto px-[40px] py-[40px]",
         title:
           "flex-1 h-full text-[#ffffff] text-6xl font-semibold text-center w-[830px] mx-auto items-center justify-center leading-tight",
         subTitle:

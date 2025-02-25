@@ -23,8 +23,8 @@ export default async function GET() {
           "Generate beautiful open graph images for your website with Ohimg. Customize the template to match your brand.",
       },
       gradient: {
-        startColor: "#0F172A", // Very dark blue
-        endColor: "#1E293B", // Dark slate blue
+        startColor: "#0F172A",
+        endColor: "#1E293B",
         direction: "to bottom" as GradientDirection,
         opacity: 0.95,
       },

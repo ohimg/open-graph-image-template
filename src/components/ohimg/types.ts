@@ -137,7 +137,7 @@ export interface ContentLayout {
 }
 
 // Main template interface
-export interface ImageTemplate {
+export interface OhImgBaseTemplateProps {
   // Required content
   content: {
     title: string;

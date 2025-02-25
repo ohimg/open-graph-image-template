@@ -1,4 +1,10 @@
-export type { ImageTemplate, PresetName } from "./types";
+export type {
+  OhImgBaseTemplateProps,
+  PresetName,
+  GradientDirection,
+  MaskDirection,
+  PatternType,
+} from "./types";
 export {
   getPatternTypes,
   getGradientDirections,
@@ -7,4 +13,4 @@ export {
   getAlignmentOptions,
   getPresetNames,
 } from "./types";
-export { Template } from "./template";
+export { OhImgBaseTemplate } from "./template";

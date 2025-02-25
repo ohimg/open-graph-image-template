@@ -1,18 +1,18 @@
 /* eslint-disable react/no-unknown-property */
 import {
   type GradientLayer,
-  type ImageTemplate,
+  type OhImgBaseTemplateProps,
   type PatternLayer,
 } from "./types";
 import { cn, getGradientStyle, getPatternStyle } from "./helpers";
 
-export function Template({
+export function OhImgBaseTemplate({
   content,
   background,
   pattern,
   gradient,
   layout,
-}: ImageTemplate) {
+}: OhImgBaseTemplateProps) {
   const mergedLayout = layout;
   const mergedGradient = gradient;
   const mergedPattern = pattern;

@@ -8,4 +8,3 @@ export {
   getPresetNames,
 } from "./types";
 export { Template } from "./template";
-export { presets } from "./presets";

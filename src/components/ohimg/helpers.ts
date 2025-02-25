@@ -1,10 +1,4 @@
-import type {
-  ContentLayout,
-  GradientLayer,
-  PatternLayer,
-  PositionedElement,
-} from "./types";
-import { defaultLayout } from "./presets";
+import type { GradientLayer, PatternLayer, PositionedElement } from "./types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -237,52 +231,6 @@ export const getGradientStyle = (props: GradientLayer) => {
       })),
   };
 };
-
-export function getDefaultLayout(): ContentLayout {
-  return defaultLayout;
-}
-
-export function mergeLayouts(
-  defaultLayout: ContentLayout,
-  presetLayout: Partial<ContentLayout> = {},
-  customLayout: Partial<ContentLayout> = {}
-): ContentLayout {
-  return {
-    layoutContainer: cn(
-      defaultLayout.layoutContainer,
-      presetLayout.layoutContainer,
-      customLayout.layoutContainer
-    ),
-    logoContainer: cn(
-      defaultLayout.logoContainer,
-      presetLayout.logoContainer,
-      customLayout.logoContainer
-    ),
-    contentContainer: cn(
-      defaultLayout.contentContainer,
-      presetLayout.contentContainer,
-      customLayout.contentContainer
-    ),
-    logo: cn(defaultLayout.logo, presetLayout.logo, customLayout.logo),
-    tagContainer: cn(
-      defaultLayout.tagContainer,
-      presetLayout.tagContainer,
-      customLayout.tagContainer
-    ),
-    tag: cn(defaultLayout.tag, presetLayout.tag, customLayout.tag),
-    title: cn(defaultLayout.title, presetLayout.title, customLayout.title),
-    subTitle: cn(
-      defaultLayout.subTitle,
-      presetLayout.subTitle,
-      customLayout.subTitle
-    ),
-    website: cn(
-      defaultLayout.website,
-      presetLayout.website,
-      customLayout.website
-    ),
-  };
-}
 
 export function calculateMaxWidth(paddingX: string | undefined): number {
   const baseWidth = 1200;

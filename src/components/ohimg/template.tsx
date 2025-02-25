@@ -4,16 +4,7 @@ import {
   type ImageTemplate,
   type PatternLayer,
 } from "./types";
-import {
-  cn,
-  getDefaultLayout,
-  getGradientStyle,
-  getPatternStyle,
-  mergeGradientWithPreset,
-  mergeLayouts,
-  mergePatternWithPreset,
-} from "./helpers";
-import { presets } from "./presets";
+import { cn, getGradientStyle, getPatternStyle } from "./helpers";
 
 export function Template({
   content,
@@ -21,33 +12,23 @@ export function Template({
   pattern,
   gradient,
   layout,
-  preset = "modern",
 }: ImageTemplate) {
-  const presetValues = presets[preset];
-  const defaultLayout = getDefaultLayout();
-  const mergedLayout = mergeLayouts(defaultLayout, presetValues.layout, layout);
-
-  // const maxWidth: number = calculateMaxWidth(mergedLayout.padding?.x);
-
-  const mergedGradient = mergeGradientWithPreset(
-    gradient,
-    presetValues.gradient
-  );
-
-  const mergedPattern = mergePatternWithPreset(pattern, presetValues.pattern);
+  const mergedLayout = layout;
+  const mergedGradient = gradient;
+  const mergedPattern = pattern;
 
   return (
     <div
       tw={cn(
         "relative flex w-full h-full",
         "flex flex-col",
-        mergedLayout.layoutContainer
+        mergedLayout?.layoutContainer
       )}
     >
       {background?.imageSrc && (
         <img
           tw="absolute inset-0"
-          alt=""
+          alt="Background image"
           src={background.imageSrc}
           width={1200}
           height={630}
@@ -72,22 +53,21 @@ export function Template({
       )}
 
       {/* Content container */}
-      <div tw={cn("flex", mergedLayout.contentContainer)}>
+      <div tw={cn("flex", mergedLayout?.contentContainer)}>
         {content?.logoSrc && (
-          <div tw={cn("flex", mergedLayout.logoContainer)}>
+          <div tw={cn("flex", mergedLayout?.logoContainer)}>
             <img
               alt={content.title || "Logo"}
               src={content.logoSrc}
-              // height={`${mergedLayout.logo?.height}`}
-              tw={mergedLayout.logo}
+              tw={mergedLayout?.logo}
             />
           </div>
         )}
 
         {content.tags && content.tags?.length > 0 && (
-          <div tw={cn("flex", mergedLayout.tagContainer)}>
+          <div tw={cn("flex", mergedLayout?.tagContainer)}>
             {content.tags.map((tag, index) => (
-              <div key={index} tw={mergedLayout.tag}>
+              <div key={index} tw={mergedLayout?.tag}>
                 {tag}
               </div>
             ))}
@@ -95,7 +75,7 @@ export function Template({
         )}
 
         <div
-          tw={cn("flex-1", mergedLayout.title)}
+          tw={cn("flex-1", mergedLayout?.title)}
           style={{
             fontFamily: "Inter_18pt-Regular",
           }}
@@ -105,7 +85,7 @@ export function Template({
 
         {content.subTitle && (
           <div
-            tw={mergedLayout.subTitle}
+            tw={mergedLayout?.subTitle}
             style={{
               fontFamily: "Inter_18pt-Regular",
             }}
@@ -116,7 +96,7 @@ export function Template({
 
         {content.website && (
           <div
-            tw={mergedLayout.website}
+            tw={mergedLayout?.website}
             style={{
               fontFamily: "Inter_18pt-Regular",
             }}

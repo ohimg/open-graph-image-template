@@ -1,4 +1,4 @@
-import { getAllPosts, getPostBySlug } from "@/app/blog/lib/posts";
+import { getAllConfigs, getConfigBySlug } from "@/app/images/lib/configs";
 import { Metadata } from "next";
 
 type Props = {
@@ -7,19 +7,19 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  return getAllPosts().map((post) => ({
-    slug: post.slug,
+  return getAllConfigs().map((config) => ({
+    slug: config.slug,
   }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await params;
-  // const post = getPostBySlug(resolvedParams.slug);
+  // const post = getConfigBySlug(resolvedParams.slug);
 
   return {
     // title: slug,
     openGraph: {
-      images: `/blog/${resolvedParams.slug}/og.png`,
+      images: `/images/${resolvedParams.slug}/og.png`,
     },
   };
 }
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Post({ params }: Props) {
   const resolvedParams = await params;
   const { slug } = resolvedParams;
-  const config = getPostBySlug(slug);
+  const config = getConfigBySlug(slug);
 
   if (!config) {
     return <div>Post not found</div>;

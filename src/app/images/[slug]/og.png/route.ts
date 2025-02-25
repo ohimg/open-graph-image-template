@@ -1,4 +1,4 @@
-import { getAllPosts, getPostBySlug } from "@/app/blog/lib/posts";
+import { getAllConfigs, getConfigBySlug } from "@/app/images/lib/configs";
 import { ImageResponse } from "next/og";
 import type { ImageResponseOptions } from "next/server";
 import {
@@ -16,8 +16,8 @@ import {
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
-  return getAllPosts().map((post) => ({
-    slug: post.slug,
+  return getAllConfigs().map((config) => ({
+    slug: config.slug,
   }));
 }
 
@@ -26,7 +26,7 @@ export async function GET(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const resolvedParams = await params;
-  const post = getPostBySlug(resolvedParams.slug);
+  const config = getConfigBySlug(resolvedParams.slug);
 
   const imageOptions: ImageResponseOptions = {
     width: 1200,
@@ -70,17 +70,17 @@ export async function GET(
     },
   };
 
-  if (!post) {
+  if (!config) {
     return new ImageResponse(OhImgBaseTemplate(ohImgOptions), imageOptions);
   }
 
-  const { slug, ...postWithoutSlug } = post;
+  const { slug, ...configWithoutSlug } = config;
 
   const templateConfig: OhImgBaseTemplateProps = {
-    ...postWithoutSlug,
+    ...configWithoutSlug,
     content: {
-      ...postWithoutSlug.content,
-      title: `${slug} - ${postWithoutSlug.content.title}`,
+      ...configWithoutSlug.content,
+      title: `${slug} - ${configWithoutSlug.content.title}`,
     },
   };
 

@@ -1,10 +1,10 @@
 import type { OhImgBaseTemplateProps } from "@/components/ohimg";
 
-type Post = OhImgBaseTemplateProps & {
+type Config = OhImgBaseTemplateProps & {
   slug: string;
 };
 
-const imageConfigs: Post[] = [
+const imageConfigs: Config[] = [
   {
     slug: "image-1",
     content: {
@@ -80,10 +80,10 @@ const imageConfigs: Post[] = [
   },
 ];
 
-export function getPostBySlug(slug: string): Post | undefined {
-  return imageConfigs.find((post) => post.slug === slug);
+export function getConfigBySlug(slug: string): Config | undefined {
+  return imageConfigs.find((config) => config.slug === slug);
 }
 
-export function getAllPosts(): Post[] {
+export function getAllConfigs(): Config[] {
   return imageConfigs;
 }

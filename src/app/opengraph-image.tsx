@@ -8,9 +8,13 @@ import {
   PatternType,
 } from "@/components/ohimg";
 
-export const runtime = "edge";
+// export const runtime = "edge";
 
-export default async function GET() {
+export const contentType = "image/png";
+
+export const dynamic = "force-static";
+
+export default function GET() {
   const imageOptions: ImageResponseOptions = {
     width: 1200,
     height: 630,

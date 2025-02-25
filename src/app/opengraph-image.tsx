@@ -49,7 +49,7 @@ export default async function GET() {
         title:
           "flex-1 h-full text-[#ffffff] text-6xl font-semibold text-center w-[830px] mx-auto items-center justify-center leading-tight",
         subTitle:
-          "flex h-56 items-center justify-center text-center text-2xl font-semibold text-gray-300 w-[830px] mx-auto",
+          "flex h-48 items-start justify-center text-center text-2xl font-semibold text-gray-300 w-[830px] mx-auto",
       },
     }),
     imageOptions

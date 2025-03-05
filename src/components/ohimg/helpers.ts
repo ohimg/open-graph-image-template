@@ -1,4 +1,11 @@
-import type { GradientLayer, PatternLayer, PositionedElement } from "./types";
+import type {
+  BackgroundImageLayer,
+  ContentLayout,
+  GradientLayer,
+  OhImgBaseTemplateProps,
+  PatternLayer,
+  PositionedElement,
+} from "./types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -133,80 +140,6 @@ export const getPatternStyle = (props: PatternLayer) => {
   }
 };
 
-export function mergePatternWithPreset(
-  userPattern?: PatternLayer,
-  presetPattern?: PatternLayer
-): PatternLayer | undefined {
-  // If no patterns defined, return undefined
-  if (!userPattern && !presetPattern) return undefined;
-
-  // If user explicitly provided pattern type "none", return undefined
-  if (userPattern?.type === "none") return undefined;
-
-  // Merge mask properties if either exists
-  const mergedMask =
-    userPattern?.mask || presetPattern?.mask
-      ? {
-          enabled: userPattern?.mask?.enabled ?? presetPattern?.mask?.enabled,
-          direction:
-            userPattern?.mask?.direction ?? presetPattern?.mask?.direction,
-          visibleRadius:
-            userPattern?.mask?.visibleRadius ??
-            presetPattern?.mask?.visibleRadius,
-          fadeWidth:
-            userPattern?.mask?.fadeWidth ?? presetPattern?.mask?.fadeWidth,
-        }
-      : undefined;
-
-  // Return merged pattern with fallbacks to preset values
-  return {
-    type: userPattern?.type ?? presetPattern?.type,
-    color: userPattern?.color ?? presetPattern?.color,
-    opacity: userPattern?.opacity ?? presetPattern?.opacity,
-    size: userPattern?.size ?? presetPattern?.size,
-    backgroundSize:
-      userPattern?.backgroundSize ?? presetPattern?.backgroundSize,
-    lineThickness: userPattern?.lineThickness ?? presetPattern?.lineThickness,
-    mask: mergedMask,
-  };
-}
-
-// First, let's create the mergeGradientWithPreset function
-export function mergeGradientWithPreset(
-  userGradient?: GradientLayer,
-  presetGradient?: GradientLayer
-): GradientLayer | undefined {
-  // If no gradients defined, return undefined
-  if (!userGradient && !presetGradient) return undefined;
-
-  // If user explicitly provided direction "none", return undefined
-  if (userGradient?.direction === "none") return undefined;
-
-  // Merge mask properties if either exists
-  const mergedMask =
-    userGradient?.mask || presetGradient?.mask
-      ? {
-          enabled: userGradient?.mask?.enabled ?? presetGradient?.mask?.enabled,
-          direction:
-            userGradient?.mask?.direction ?? presetGradient?.mask?.direction,
-          visibleRadius:
-            userGradient?.mask?.visibleRadius ??
-            presetGradient?.mask?.visibleRadius,
-          fadeWidth:
-            userGradient?.mask?.fadeWidth ?? presetGradient?.mask?.fadeWidth,
-        }
-      : undefined;
-
-  // Return merged gradient with fallbacks to preset values
-  return {
-    startColor: userGradient?.startColor ?? presetGradient?.startColor,
-    endColor: userGradient?.endColor ?? presetGradient?.endColor,
-    opacity: userGradient?.opacity ?? presetGradient?.opacity,
-    direction: userGradient?.direction ?? presetGradient?.direction,
-    mask: mergedMask,
-  };
-}
-
 // Then, let's create the getGradientStyle function
 export const getGradientStyle = (props: GradientLayer) => {
   if (!props.direction || props.direction === "none") {
@@ -266,4 +199,27 @@ export function getPositionClasses(
     `max-w-[${maxWidth}px]`
     // !element.width && defaultWidth && `max-w-[${defaultWidth}]`
   );
+}
+
+export function createOhImgPreset({
+  content,
+  theme,
+  layout,
+  background,
+}: {
+  content: OhImgBaseTemplateProps["content"];
+  theme: {
+    pattern?: PatternLayer;
+    gradient?: GradientLayer;
+  };
+  layout?: ContentLayout;
+  background?: BackgroundImageLayer;
+}): OhImgBaseTemplateProps {
+  return {
+    content,
+    pattern: theme.pattern,
+    gradient: theme.gradient,
+    layout,
+    background,
+  };
 }

@@ -77,7 +77,7 @@ export function OhImgBaseTemplate({
         <div
           tw={cn("flex-1", mergedLayout?.title)}
           style={{
-            fontFamily: "Inter_18pt-Regular",
+            fontFamily: "Inter_18pt-Bold",
           }}
         >
           {content.title}

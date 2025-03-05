@@ -2,83 +2,38 @@
 // "use client";
 
 // Layer 1 - Pattern configuration
-export const patternTypes = ["none", "grid", "dots"] as const;
-export type PatternType = (typeof patternTypes)[number];
+export type PatternType = "none" | "grid" | "dots";
 
 // Layer 2 - Gradient configuration
-export const gradientDirections = [
-  "none",
-  "to right",
-  "to left",
-  "to bottom",
-  "to top",
-  "to bottom right",
-  "to bottom left",
-  "to top right",
-  "to top left",
-] as const;
-export type GradientDirection = (typeof gradientDirections)[number];
+export type GradientDirection =
+  | "none"
+  | "to right"
+  | "to left"
+  | "to bottom"
+  | "to top"
+  | "to bottom right"
+  | "to bottom left"
+  | "to top right"
+  | "to top left";
 
 // Pattern mask directions
-export const maskDirections = [
-  "none",
-  "circle at center",
-  "circle at center top",
-  "circle at top right",
-  "circle at center right",
-  "circle at bottom right",
-  "circle at center bottom",
-  "circle at bottom left",
-  "circle at center left",
-  "circle at top left",
-] as const;
-export type MaskDirection = (typeof maskDirections)[number];
+export type MaskDirection =
+  | "none"
+  | "circle at center"
+  | "circle at center top"
+  | "circle at top right"
+  | "circle at center right"
+  | "circle at bottom right"
+  | "circle at center bottom"
+  | "circle at bottom left"
+  | "circle at center left"
+  | "circle at top left";
 
 // Layout position options
-export const positionOptions = ["start", "center", "end"] as const;
-export type PositionOption = (typeof positionOptions)[number];
+export type PositionOption = "start" | "center" | "end";
 
 // Text alignment options
-export const alignmentOptions = ["left", "center", "right"] as const;
-export type AlignmentOption = (typeof alignmentOptions)[number];
-
-// Preset names
-export const presetNames = [
-  "solid",
-  "modern",
-  "classic",
-  "minimal",
-  "bold",
-  "bg-image",
-  "darkmode",
-  "lightmode",
-] as const;
-export type PresetName = (typeof presetNames)[number];
-
-// Helper functions to get type values
-export function getPatternTypes(): PatternType[] {
-  return [...patternTypes];
-}
-
-export function getGradientDirections(): GradientDirection[] {
-  return [...gradientDirections];
-}
-
-export function getMaskDirections(): MaskDirection[] {
-  return [...maskDirections];
-}
-
-export function getPositionOptions(): PositionOption[] {
-  return [...positionOptions];
-}
-
-export function getAlignmentOptions(): AlignmentOption[] {
-  return [...alignmentOptions];
-}
-
-export function getPresetNames(): PresetName[] {
-  return [...presetNames];
-}
+export type AlignmentOption = "left" | "center" | "right";
 
 // Layer-specific interfaces
 export interface BackgroundImageLayer {
@@ -93,12 +48,12 @@ export interface MaskLayer {
 }
 
 export interface PatternLayer {
-  type?: PatternType; // none, dots, grid
-  color?: string; // dots and grid
-  opacity?: number; // dots and grid
-  size?: number; // dots and grid
-  backgroundSize?: number; // only dots
-  lineThickness?: number; // only grid
+  type?: PatternType;
+  color?: string;
+  opacity?: number;
+  size?: number;
+  backgroundSize?: number;
+  lineThickness?: number;
   mask?: MaskLayer;
 }
 
@@ -154,12 +109,4 @@ export interface OhImgBaseTemplateProps {
 
   // Layout configuration
   layout?: ContentLayout;
-
-  // Optional preset
-  preset?: PresetName;
-
-  // Override flag
-  override?: boolean;
 }
-
-// Preset configurations

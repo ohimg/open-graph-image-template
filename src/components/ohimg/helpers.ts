@@ -140,7 +140,6 @@ export const getPatternStyle = (props: PatternLayer) => {
   }
 };
 
-// Then, let's create the getGradientStyle function
 export const getGradientStyle = (props: GradientLayer) => {
   if (!props.direction || props.direction === "none") {
     return {};
@@ -197,7 +196,6 @@ export function getPositionClasses(
   return clsx(
     element.customClasses && element.customClasses,
     `max-w-[${maxWidth}px]`
-    // !element.width && defaultWidth && `max-w-[${defaultWidth}]`
   );
 }
 

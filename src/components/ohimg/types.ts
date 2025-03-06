@@ -1,10 +1,5 @@
-// types.ts
-// "use client";
-
-// Layer 1 - Pattern configuration
 export type PatternType = "none" | "grid" | "dots";
 
-// Layer 2 - Gradient configuration
 export type GradientDirection =
   | "none"
   | "to right"
@@ -16,7 +11,6 @@ export type GradientDirection =
   | "to top right"
   | "to top left";
 
-// Pattern mask directions
 export type MaskDirection =
   | "none"
   | "circle at center"
@@ -29,13 +23,10 @@ export type MaskDirection =
   | "circle at center left"
   | "circle at top left";
 
-// Layout position options
 export type PositionOption = "start" | "center" | "end";
 
-// Text alignment options
 export type AlignmentOption = "left" | "center" | "right";
 
-// Layer-specific interfaces
 export interface BackgroundImageLayer {
   imageSrc?: string;
 }

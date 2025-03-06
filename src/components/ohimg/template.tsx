@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import {
   type GradientLayer,
   type OhImgBaseTemplateProps,
@@ -36,7 +35,6 @@ export function OhImgBaseTemplate({
       )}
 
       {/* Background Gradient layer */}
-
       {mergedGradient && mergedGradient.direction !== "none" && (
         <div
           tw="absolute inset-0"

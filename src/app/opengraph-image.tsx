@@ -1,3 +1,9 @@
+/**
+ * This is an example of a dynamic Open Graph image usage in nextjs.
+ * You don't need to use this file in your project.
+ * You can create your own file with an understanding on how to use the template in your project.
+ */
+
 import { ImageResponse } from "next/og";
 import type { ImageResponseOptions } from "next/server";
 import {
